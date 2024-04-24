@@ -18,7 +18,7 @@ namespace api.Dtos.Stock
         public string Industry { get; set; } = string.Empty;
         public string marketCap { get; set; } = string.Empty;
 
-        public List<Comment> Comments { get; set; } = new List<Comment>();
+        //public List<Comment> Comments { get; set; } = new List<Comment>();
 
     }
 }
