@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using api.Interfaces;
 using api.Repository;
 using api.Controllers;
+using Newtonsoft.Json;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers().AddNewtonsoftJson(options  => {
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+});
 
 //Connection string to database
 builder.Services.AddDbContext<ApplicationDBContext>(options => {
